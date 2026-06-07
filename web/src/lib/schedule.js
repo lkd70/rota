@@ -134,28 +134,78 @@ export function labelFor(entry) {
   return 'Overnight cover';
 }
 
-/** @param {ScheduleEntry[]} schedule */
+/** @typedef {{ date: string, entry: ScheduleEntry | null }} WeekCell */
+
+/** @param {string} dateStr */
+function parseIsoDate(dateStr) {
+  return new Date(`${dateStr}T12:00:00`);
+}
+
+/** @param {Date} date */
+function toIsoDate(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+/** @param {string} dateStr */
+function mondayOnOrBefore(dateStr) {
+  const date = parseIsoDate(dateStr);
+  const day = date.getDay();
+  const diff = day === 0 ? 6 : day - 1;
+  date.setDate(date.getDate() - diff);
+  return toIsoDate(date);
+}
+
+/** @param {string} dateStr */
+function sundayOnOrAfter(dateStr) {
+  const date = parseIsoDate(dateStr);
+  const day = date.getDay();
+  const diff = day === 0 ? 0 : 7 - day;
+  date.setDate(date.getDate() + diff);
+  return toIsoDate(date);
+}
+
+/** @param {ScheduleEntry[]} schedule @returns {WeekCell[][]} */
 export function chunkWeeks(schedule) {
-  /** @type {ScheduleEntry[][]} */
+  if (!schedule.length) return [];
+
+  const byDate = indexByDate(schedule);
+  const periodStart = schedule[0].date;
+  const periodEnd = schedule[schedule.length - 1].date;
+  const gridStart = mondayOnOrBefore(periodStart);
+  const gridEnd = sundayOnOrAfter(periodEnd);
+
+  /** @type {WeekCell[][]} */
   const weeks = [];
-  for (let i = 0; i < schedule.length; i += 7) {
-    weeks.push(schedule.slice(i, i + 7));
+  let cursor = gridStart;
+
+  while (cursor <= gridEnd) {
+    /** @type {WeekCell[]} */
+    const week = [];
+    for (let i = 0; i < 7; i++) {
+      week.push({
+        date: cursor,
+        entry: byDate[cursor] ?? null,
+      });
+      cursor = addDaysIso(cursor, 1);
+    }
+    weeks.push(week);
   }
+
   return weeks;
 }
 
-/** @param {ScheduleEntry[]} week */
+/** @param {WeekCell[]} week */
 export function weekRangeLabel(week) {
   if (!week.length) return '';
   const start = week[0].date;
-  const end = week[week.length - 1].date;
+  const end = week[6].date;
   const startDate = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(
-    new Date(`${start}T12:00:00`),
+    parseIsoDate(start),
   );
   const endDate = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(
-    new Date(`${end}T12:00:00`),
+    parseIsoDate(end),
   );
-  return start === end ? startDate : `${startDate} – ${endDate}`;
+  return `${startDate} – ${endDate}`;
 }
 
 /** @typedef {{ type: 'rest' } | { type: 'range', start: string, end: string, overnight: boolean }} TimeDisplay */
@@ -166,6 +216,25 @@ export function timeDisplayFor(entry) {
   if (!entry.hours) return { type: 'rest' };
   const { start, end, overnight } = parseHours(entry.hours);
   return { type: 'range', start, end, overnight };
+}
+
+/** @param {string} time HH:MM */
+export function formatTimeShort(time) {
+  const [h, m] = time.split(':');
+  if (m === '00') return String(Number(h));
+  return `${Number(h)}:${m}`;
+}
+
+/** @param {string} start @param {string} end @param {boolean} overnight */
+export function formatRangeCompact(start, end, overnight) {
+  const s = formatTimeShort(start);
+  const e = formatTimeShort(end);
+  return overnight ? `${s}→${e}` : `${s}–${e}`;
+}
+
+/** @param {string} dateStr */
+export function isFirstOfMonth(dateStr) {
+  return parseIsoDate(dateStr).getDate() === 1;
 }
 
 /** @param {ScheduleEntry | undefined} entry */

@@ -1,17 +1,20 @@
 <script>
-  import { timeDisplayFor } from './schedule.js';
+  import { formatRangeCompact, hoursFor, timeDisplayFor } from './schedule.js';
 
   /** @type {{ entry: import('./schedule.js').ScheduleEntry, mini?: boolean }} */
   let { entry, mini = false } = $props();
 
   const display = $derived(timeDisplayFor(entry));
+  const fullRange = $derived(hoursFor(entry));
 </script>
 
 {#if display.type === 'rest'}
   <p class="time rest" class:mini>Day off</p>
+{:else if mini}
+  <p class="time compact-line" title="{fullRange} BST">{formatRangeCompact(display.start, display.end, display.overnight)}</p>
 {:else}
-  <div class="time-range" class:mini class:overnight={display.overnight}>
-    {#if !mini && display.overnight}
+  <div class="time-range" class:overnight={display.overnight}>
+    {#if display.overnight}
       <div class="time-row">
         <span class="time-value start">{display.start}</span>
         <span class="time-sep overnight-sep" aria-hidden="true">
@@ -23,24 +26,11 @@
         <span class="time-value end">{display.end}</span>
       </div>
       <span class="next-day">ends next morning · BST</span>
-    {:else if !mini}
+    {:else}
       <span class="time-value start">{display.start}</span>
       <span class="time-sep" aria-hidden="true">–</span>
       <span class="time-value end">{display.end}</span>
       <span class="tz">BST</span>
-    {:else}
-      <span class="time-value start">{display.start}</span>
-      {#if display.overnight}
-        <span class="time-sep overnight-sep" aria-label="Continues until next morning" title="Continues until next morning">
-          <svg class="overnight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 5v14" />
-            <path d="M7 10l5-5 5 5" />
-          </svg>
-        </span>
-      {:else}
-        <span class="time-sep" aria-hidden="true">–</span>
-      {/if}
-      <span class="time-value end">{display.end}</span>
     {/if}
   </div>
 {/if}
@@ -60,36 +50,36 @@
     font-size: 0.7rem;
   }
 
-  .time-range {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.1rem;
+  .compact-line {
     margin: 0;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
-  .time-range:not(.mini) {
+  .time-range {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: center;
     gap: 0.4rem;
+    margin: 0;
   }
 
-  .time-range:not(.mini).overnight {
+  .time-range.overnight {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .time-range:not(.mini).overnight .time-row {
+  .time-range.overnight .time-row {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-  }
-
-  .time-range.mini {
-    gap: 0;
-    margin-top: 0.1rem;
   }
 
   .time-value {
@@ -100,12 +90,18 @@
     line-height: 1.2;
   }
 
-  .time-range:not(.mini) .time-value {
+  .time-range .time-value {
     font-size: 1.05rem;
   }
 
-  .time-range.mini .time-value {
-    font-size: 0.72rem;
+  @media (max-width: 640px) {
+    .compact-line {
+      font-size: 0.62rem;
+    }
+
+    .time.rest.mini {
+      font-size: 0.58rem;
+    }
   }
 
   .time-sep {
@@ -115,10 +111,6 @@
     color: var(--muted);
     font-size: 0.72rem;
     line-height: 1;
-  }
-
-  .time-range.mini .time-sep {
-    margin: 0.05rem 0;
   }
 
   .overnight-sep {
@@ -132,7 +124,7 @@
     transform: rotate(180deg);
   }
 
-  .time-range:not(.mini) .overnight-icon {
+  .time-range .overnight-icon {
     width: 1rem;
     height: 1rem;
   }

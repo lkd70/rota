@@ -1,7 +1,7 @@
 <script>
   import DayIcon from './DayIcon.svelte';
   import TimeDisplay from './TimeDisplay.svelte';
-  import { dayKindFor, formatDayNum, formatMonthShort, hoursFor, labelFor } from './schedule.js';
+  import { dayKindFor, formatDayNum, formatMonthShort, hoursFor, isFirstOfMonth, labelFor } from './schedule.js';
 
   /** @type {{
     entry: import('./schedule.js').ScheduleEntry,
@@ -10,6 +10,7 @@
     liveBusy?: boolean,
     mini?: boolean,
     compact?: boolean,
+    markCoverStart?: boolean,
   }} */
   let {
     entry,
@@ -18,6 +19,7 @@
     liveBusy = false,
     mini = false,
     compact = true,
+    markCoverStart = false,
   } = $props();
 
   const kind = $derived(dayKindFor(entry));
@@ -36,6 +38,7 @@
   class:late={kind === 'late'}
   class:night={kind === 'night'}
   aria-current={isToday ? 'date' : undefined}
+  data-cover-start={markCoverStart ? '' : undefined}
   title={`${label} · ${hours} BST`}
 >
   <div class="icon-wrap">
@@ -46,9 +49,13 @@
     <span class="day-num">{formatDayNum(entry.date)}</span>
     {#if !mini}
       <span class="month">{formatMonthShort(entry.date)}</span>
+    {:else if isFirstOfMonth(entry.date)}
+      <span class="month-mini">{formatMonthShort(entry.date)}</span>
     {/if}
   </p>
-  <p class="weekday">{entry.day}</p>
+  {#if !mini}
+    <p class="weekday">{entry.day}</p>
+  {/if}
 
   {#if !mini}
     <p class="label">{label}</p>
@@ -196,11 +203,50 @@
     font-size: 0.95rem;
   }
 
+  @media (max-width: 640px) {
+    .card.mini {
+      padding: 0.3rem 0.08rem 0.35rem;
+      border-radius: 8px;
+    }
+
+    .mini .icon-wrap {
+      width: 1.55rem;
+      height: 1.55rem;
+      margin-bottom: 0.05rem;
+    }
+
+    .mini :global(.icon) {
+      width: 0.95rem;
+      height: 0.95rem;
+    }
+
+    .mini .day-num {
+      font-size: 0.72rem;
+    }
+
+    .mini .live-pill {
+      font-size: 0.45rem;
+      padding: 0.1rem 0.2rem;
+      margin-top: 0.1rem;
+    }
+  }
+
   .month {
     margin-left: 0.25rem;
     font-size: 0.82rem;
     color: var(--muted);
     font-weight: 600;
+  }
+
+  .month-mini {
+    display: block;
+    margin-top: -0.05rem;
+    font-size: 0.48rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1;
   }
 
   .weekday {
