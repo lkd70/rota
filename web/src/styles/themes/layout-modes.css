@@ -2,7 +2,9 @@
 
 @media (max-width: 640px) {
   .page {
-    padding: 1.15rem 0.75rem 2.5rem;
+    --page-pad-x: 0.75rem;
+    --page-pad-y: 1.15rem;
+    padding: var(--page-pad-y) var(--page-pad-x) 2.5rem;
   }
 
   .today-main {

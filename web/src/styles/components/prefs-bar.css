@@ -26,6 +26,34 @@
   color: var(--muted);
 }
 
+.pref-label--hold {
+  appearance: none;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: default;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.pref-secret-input {
+  width: 4.25rem;
+  padding: 0.18rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.72rem;
+  line-height: 1.2;
+}
+
+.pref-secret-input:focus {
+  outline: 2px solid var(--focus-ring, #3b82f6);
+  outline-offset: 1px;
+}
+
 .pref-btn {
   appearance: none;
   border: none;

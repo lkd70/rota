@@ -1,0 +1,435 @@
+/* Modern bet365-inspired easter egg theme */
+
+[data-resolved-theme='bet365'] {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --b365-grey-1f: #1f1f1f;
+  --b365-green-126e51: #126e51;
+
+  --bg: var(--b365-grey-1f);
+  --bg-elevated: #262626;
+  --bg-gradient: none;
+  --surface: #1e1e1e;
+  --surface-raised: #282828;
+  --surface-hover: #323232;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #f5f5f5;
+  --muted: #9aa0a6;
+  --inset-surface: rgba(0, 0, 0, 0.35);
+
+  --kind-rest: #00ffb3;
+  --kind-rest-bg: rgba(0, 255, 179, 0.08);
+  --kind-rest-border: rgba(0, 255, 179, 0.22);
+  --kind-rest-glow: rgba(0, 255, 179, 0.2);
+
+  --kind-office: #ffdf1b;
+  --kind-office-bg: rgba(255, 223, 27, 0.08);
+  --kind-office-border: rgba(255, 223, 27, 0.28);
+  --kind-office-glow: rgba(255, 223, 27, 0.22);
+
+  --kind-late: #ff9f43;
+  --kind-late-bg: rgba(255, 159, 67, 0.08);
+  --kind-late-border: rgba(255, 159, 67, 0.24);
+  --kind-late-glow: rgba(255, 159, 67, 0.2);
+
+  --kind-night: #b794f6;
+  --kind-night-bg: rgba(183, 148, 246, 0.08);
+  --kind-night-border: rgba(183, 148, 246, 0.24);
+  --kind-night-glow: rgba(183, 148, 246, 0.2);
+
+  --accent: #ffdf1b;
+  --accent-soft: rgba(255, 223, 27, 0.12);
+  --accent-border: rgba(255, 223, 27, 0.32);
+  --week-badge-bg: rgba(0, 255, 179, 0.12);
+  --banner-strong: #ffdf1b;
+
+  --free: #00ffb3;
+  --free-bg: rgba(0, 255, 179, 0.1);
+  --free-border: rgba(0, 255, 179, 0.22);
+  --busy: #ff9f43;
+  --busy-bg: rgba(255, 159, 67, 0.12);
+  --busy-border: rgba(255, 159, 67, 0.26);
+
+  --pill-bg: rgba(255, 255, 255, 0.06);
+  --pill-text: #e8eaed;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --glass-scrim: rgba(0, 0, 0, 0.72);
+  --glass-modal: #1e1e1e;
+  --glass-modal-head: linear-gradient(90deg, var(--b365-green-126e51) 0%, #1a1a1a 55%, var(--b365-grey-1f) 100%);
+  --glass-modal-cell: #282828;
+  --glass-modal-border: rgba(255, 255, 255, 0.1);
+  --focus-ring: #00ffb3;
+
+  --b365-teal: #00ffb3;
+  --b365-yellow: #ffdf1b;
+  --b365-header-height: 3rem;
+  --b365-header: linear-gradient(90deg, var(--b365-green-126e51) 0%, var(--b365-grey-1f) 62%);
+  --b365-cta: #ffdf1b;
+}
+
+[data-resolved-theme='bet365'] body {
+  background: var(--b365-grey-1f);
+}
+
+[data-resolved-theme='bet365'] .b365-app {
+  min-height: 100vh;
+  background: var(--b365-grey-1f);
+}
+
+[data-resolved-theme='bet365'] .b365-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-shrink: 0;
+  width: 100%;
+  padding-inline: 1.25rem;
+  background-color: var(--b365-green-126e51);
+  background-image:
+    linear-gradient(to bottom, transparent 0, var(--b365-green-126e51) 100%),
+    radial-gradient(ellipse at center top, var(--b365-green-126e51), var(--b365-grey-1f) 55%);
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100px;
+}
+
+[data-resolved-theme='bet365'] .b365-site-header__inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1040px;
+  height: var(--b365-header-height);
+  margin-inline: auto;
+}
+
+[data-resolved-theme='bet365'] .b365-site-header__logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+[data-resolved-theme='bet365'] .b365-site-header__word {
+  color: #fff;
+}
+
+[data-resolved-theme='bet365'] .b365-site-header__digits {
+  color: var(--b365-yellow);
+}
+
+[data-resolved-theme='bet365'] .page--bet365 {
+  --page-pad-y: 1.25rem;
+  margin-top: 0;
+  padding-top: 1.25rem;
+}
+
+[data-resolved-theme='bet365'] .page-toolbar {
+  margin-bottom: 1.25rem;
+}
+
+[data-resolved-theme='bet365'] .hero {
+  margin-bottom: 1.75rem;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+[data-resolved-theme='bet365'] .hero h1 {
+  color: #fff;
+  letter-spacing: -0.03em;
+}
+
+[data-resolved-theme='bet365'] .hero .eyebrow {
+  color: var(--b365-teal);
+  font-weight: 600;
+}
+
+[data-resolved-theme='bet365'] .hero .sub,
+[data-resolved-theme='bet365'] .hero .status-line {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .schedule-section {
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+
+[data-resolved-theme='bet365'] .section-head h2 {
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+[data-resolved-theme='bet365'] .week-label,
+[data-resolved-theme='bet365'] .week-head span {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .week-head span.today-col {
+  color: var(--b365-teal);
+  font-weight: 700;
+}
+
+[data-resolved-theme='bet365'] .pref-group {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+}
+
+[data-resolved-theme='bet365'] .toolbar-icon-btn,
+[data-resolved-theme='bet365'] .jump-btn {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .pref-btn {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .pref-btn:hover,
+[data-resolved-theme='bet365'] .toolbar-icon-btn:hover,
+[data-resolved-theme='bet365'] .jump-btn:hover {
+  color: #fff;
+  background: var(--surface-hover);
+}
+
+[data-resolved-theme='bet365'] .pref-btn.active,
+[data-resolved-theme='bet365'] .pref-btn.active:hover {
+  background: transparent;
+  color: var(--b365-yellow);
+  border: 1px solid var(--b365-yellow);
+  font-weight: 700;
+  box-shadow: none;
+}
+
+[data-resolved-theme='bet365'] .pref-label {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .day-card,
+[data-resolved-theme='bet365'] .today-card,
+[data-resolved-theme='bet365'] .week-block,
+[data-resolved-theme='bet365'] .schedule-legend__item,
+[data-resolved-theme='bet365'] .download-action,
+[data-resolved-theme='bet365'] .stats-grid > div {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
+[data-resolved-theme='bet365'] .schedule-legend__item {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .today-card {
+  border: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--radius-md);
+}
+
+[data-resolved-theme='bet365'] .today-card::before {
+  height: 2px;
+  background: var(--kind-accent, var(--b365-teal));
+  opacity: 0.85;
+}
+
+[data-resolved-theme='bet365'] .today-kicker {
+  position: static;
+  margin: 0;
+  color: var(--b365-teal);
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+[data-resolved-theme='bet365'] .today-main {
+  background: var(--surface-raised);
+  padding-top: 0.85rem;
+}
+
+[data-resolved-theme='bet365'] .today-date,
+[data-resolved-theme='bet365'] .today-meta {
+  color: var(--text);
+}
+
+[data-resolved-theme='bet365'] .today-countdown,
+[data-resolved-theme='bet365'] .today-extra {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .countdown-value {
+  color: var(--b365-yellow);
+  font-weight: 700;
+}
+
+[data-resolved-theme='bet365'] .countdown-when {
+  color: var(--b365-teal);
+}
+
+[data-resolved-theme='bet365'] .day-card--today {
+  border-color: var(--border-strong);
+  box-shadow: inset 0 2px 0 var(--b365-teal);
+}
+
+[data-resolved-theme='bet365'] .week-block.current-week {
+  background: rgba(0, 255, 179, 0.04);
+  border-color: rgba(0, 255, 179, 0.22);
+}
+
+[data-resolved-theme='bet365'] .week-block.current-week .week-label {
+  color: var(--b365-teal);
+}
+
+[data-resolved-theme='bet365'] .week-badge {
+  color: var(--b365-teal);
+  border-color: rgba(0, 255, 179, 0.28);
+  background: rgba(0, 255, 179, 0.1);
+}
+
+[data-resolved-theme='bet365'] .modal-dialog {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  overflow: hidden;
+}
+
+[data-resolved-theme='bet365'] .modal-head {
+  background: var(--b365-header);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
+  padding: 0.65rem 0.85rem;
+  min-height: 2.75rem;
+}
+
+[data-resolved-theme='bet365'] .modal-head h2 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+[data-resolved-theme='bet365'] .modal-close {
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+[data-resolved-theme='bet365'] .modal-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+[data-resolved-theme='bet365'] .download-action {
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+[data-resolved-theme='bet365'] .download-action:hover {
+  border-color: rgba(0, 255, 179, 0.35);
+  background: var(--surface-hover);
+}
+
+[data-resolved-theme='bet365'] .download-action__label {
+  color: #fff;
+  font-weight: 600;
+}
+
+[data-resolved-theme='bet365'] .download-action__hint {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .stats-grid dt {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .stats-grid dd {
+  color: #fff;
+}
+
+[data-resolved-theme='bet365'] .rest-gap {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  color: var(--b365-yellow);
+  box-shadow: 0 0 0 2px var(--bg);
+  font-weight: 700;
+}
+
+[data-resolved-theme='bet365'] .jump-btn:hover {
+  border-color: rgba(0, 255, 179, 0.35);
+}
+
+[data-resolved-theme='bet365'] .easter-egg-toast {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+}
+
+[data-resolved-theme='bet365'] .easter-egg-toast strong {
+  color: var(--b365-yellow);
+}
+
+[data-resolved-theme='bet365'] .outside-day {
+  color: var(--muted);
+}
+
+[data-resolved-theme='bet365'] .week-cell.weekend-col {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (max-width: 640px) {
+  [data-resolved-theme='bet365'] .b365-site-header {
+    padding-inline: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  [data-resolved-theme='bet365'] .b365-site-header {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 900px) {
+  html.layout-wide [data-resolved-theme='bet365'] .b365-site-header {
+    padding-inline: clamp(1.75rem, 3vw, 4rem);
+  }
+
+  html.layout-wide [data-resolved-theme='bet365'] .b365-site-header__inner {
+    max-width: min(100%, 1920px);
+  }
+}

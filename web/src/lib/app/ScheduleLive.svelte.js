@@ -22,6 +22,11 @@ import {
   saveTheme,
   WIDE_LAYOUT_MIN_WIDTH,
 } from '$lib/prefs/preferences.js';
+import {
+  attachEasterEggListeners,
+  isEasterEggUnlocked,
+  markEasterEggUnlocked,
+} from '$lib/prefs/easterEggs.js';
 
 /** @typedef {import('$lib/domain/types.js').ScheduleDocument} ScheduleDocument */
 
@@ -53,6 +58,11 @@ export class ScheduleLive {
   nowMs = $state(Date.now());
   /** Whether `?test=1` harness UI is available. */
   harnessEnabled = false;
+  /** XP theme unlocked via easter egg. */
+  xpUnlocked = $state(false);
+  /** bet365 theme unlocked via easter egg. */
+  bet365Unlocked = $state(false);
+  showEasterEggToast = $state(/** @type {'xp' | 'bet365' | null} */ (null));
 
   /** @param {ScheduleDocument} doc @param {URLSearchParams} params */
   constructor(doc, params) {
@@ -60,6 +70,8 @@ export class ScheduleLive {
     const bootClock = new Clock(calendar);
 
     this.harnessEnabled = harness.panelOpen;
+    this.xpUnlocked = isEasterEggUnlocked('xp');
+    this.bet365Unlocked = isEasterEggUnlocked('bet365');
     this.schedule = doc;
     this.showTestPanel = harness.panelOpen;
     this.testMode = harness.active;
@@ -121,6 +133,18 @@ export class ScheduleLive {
     this.spoofedDate = live.realToday();
     this.spoofedTime = live.realTime();
   }
+
+  /** @param {'xp' | 'bet365'} id */
+  unlockEasterEggTheme(id) {
+    markEasterEggUnlocked(id);
+    if (id === 'xp') this.xpUnlocked = true;
+    if (id === 'bet365') this.bet365Unlocked = true;
+    this.theme = id;
+    this.showEasterEggToast = id;
+    window.setTimeout(() => {
+      this.showEasterEggToast = null;
+    }, 3200);
+  }
 }
 
 /** @param {ScheduleDocument} doc @param {URLSearchParams} params */
@@ -145,6 +169,10 @@ export function createScheduleLive(doc, params) {
   $effect(() => {
     applyTheme(live.theme);
     saveTheme(live.theme);
+  });
+
+  $effect(() => {
+    return attachEasterEggListeners((id) => live.unlockEasterEggTheme(id));
   });
 
   $effect(() => {

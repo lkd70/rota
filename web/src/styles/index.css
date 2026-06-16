@@ -17,3 +17,5 @@
 @import url('./components/day-icon.css') layer(components);
 @import url('./utilities/ordinal.css') layer(utilities);
 @import url('./themes/layout-modes.css') layer(themes);
+@import url('./themes/xp.css') layer(themes);
+@import url('./themes/bet365.css') layer(themes);
