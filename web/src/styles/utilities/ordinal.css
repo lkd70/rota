@@ -1,0 +1,42 @@
+.day-num {
+  display: inline-flex;
+  align-items: flex-start;
+  line-height: 1;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.day-num-value {
+  font-variant-numeric: tabular-nums;
+}
+
+.ordinal {
+  font-size: 0.55em;
+  font-weight: 600;
+  line-height: 1;
+  margin-top: 0.14em;
+  margin-left: 0.04em;
+  min-width: 0.8em;
+  text-align: left;
+}
+
+.day-card--mini .day-num {
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .day-card--mini .day-num {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 900px) {
+  html.layout-compact .day-card--mini .day-num {
+    font-size: 0.98rem;
+  }
+
+  html.layout-wide .day-card--mini .day-num {
+    font-size: clamp(1.05rem, 1.5vw, 1.55rem);
+  }
+}

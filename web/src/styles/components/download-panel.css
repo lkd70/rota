@@ -1,0 +1,44 @@
+.download-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.download-action {
+  appearance: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--glass-modal-cell);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.download-action:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.download-action__label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.download-action__hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.35;
+  word-break: break-all;
+}

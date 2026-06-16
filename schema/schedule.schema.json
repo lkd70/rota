@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://days.local/schema/schedule.schema.json",
+  "title": "Availability schedule",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "period", "days"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["timezone", "timezoneLabel", "title"],
+      "properties": {
+        "eyebrow": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "timezone": {
+          "type": "string",
+          "description": "IANA timezone identifier",
+          "pattern": "^[A-Za-z_]+/[A-Za-z_]+$"
+        },
+        "timezoneLabel": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Short label shown in the UI, e.g. BST"
+        }
+      }
+    },
+    "period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "$ref": "#/$defs/isoDate" },
+        "end": { "$ref": "#/$defs/isoDate" }
+      }
+    },
+    "days": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/day" }
+    }
+  },
+  "$defs": {
+    "isoDate": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "time": {
+      "type": "string",
+      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+    },
+    "dayType": {
+      "type": "string",
+      "enum": ["rest", "norm", "shift"]
+    },
+    "day": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "type"],
+      "properties": {
+        "date": { "$ref": "#/$defs/isoDate" },
+        "type": { "$ref": "#/$defs/dayType" },
+        "start": { "$ref": "#/$defs/time" },
+        "end": { "$ref": "#/$defs/time" },
+        "note": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "rest" } }, "required": ["type"] },
+          "then": { "not": { "anyOf": [{ "required": ["start"] }, { "required": ["end"] }] } }
+        },
+        {
+          "if": {
+            "properties": { "type": { "enum": ["norm", "shift"] } },
+            "required": ["type"]
+          },
+          "then": { "required": ["start", "end"] }
+        }
+      ]
+    }
+  }
+}

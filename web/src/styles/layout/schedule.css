@@ -1,0 +1,173 @@
+.schedule-section {
+  margin-bottom: 2rem;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.jump-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.jump-btn:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: var(--surface);
+}
+
+.schedule-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.week-block {
+  padding: 0.65rem 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.week-block.current-week {
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+}
+
+.week-block.current-week .week-label {
+  color: var(--accent);
+}
+
+.week-label {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.6rem 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.week-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  background: var(--week-badge-bg);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+}
+
+.week-counts {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.week-head {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.25rem;
+  margin-bottom: 0.35rem;
+  padding: 0 0.05rem;
+}
+
+.week-head span {
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.week-head span.today-col {
+  color: var(--accent);
+  opacity: 1;
+  font-weight: 600;
+}
+
+.week-head span.weekend-col {
+  opacity: 0.55;
+}
+
+.week-row {
+  --week-gap: 0.3rem;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--week-gap);
+}
+
+.week-cell {
+  position: relative;
+  min-width: 0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-cell.weekend-col {
+  background: color-mix(in srgb, var(--border) 28%, transparent);
+  border-radius: 8px;
+}
+
+.week-cell .day-card,
+.week-cell > .day-outside {
+  flex: 1;
+  width: 100%;
+}
+
+.day-outside {
+  min-height: 4.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  opacity: 0.35;
+}
+
+.outside-day {
+  display: flex;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.outside-mark {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1;
+}

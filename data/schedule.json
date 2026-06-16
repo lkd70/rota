@@ -1,0 +1,249 @@
+{
+  "$schema": "../schema/schedule.schema.json",
+  "meta": {
+    "eyebrow": "World Cup cover",
+    "title": "Availability",
+    "timezone": "Europe/London",
+    "timezoneLabel": "BST"
+  },
+  "period": {
+    "start": "2026-06-11",
+    "end": "2026-07-19"
+  },
+  "days": [
+    {
+      "date": "2026-06-11",
+      "type": "shift",
+      "start": "14:00",
+      "end": "22:00"
+    },
+    {
+      "date": "2026-06-12",
+      "type": "shift",
+      "start": "14:00",
+      "end": "22:00"
+    },
+    {
+      "date": "2026-06-13",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-06-14",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-06-15",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-06-16",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-06-17",
+      "type": "shift",
+      "start": "15:00",
+      "end": "23:00"
+    },
+    {
+      "date": "2026-06-18",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-06-19",
+      "type": "shift",
+      "start": "14:00",
+      "end": "22:00"
+    },
+    {
+      "date": "2026-06-20",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-06-21",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-06-22",
+      "type": "shift",
+      "start": "14:00",
+      "end": "22:00"
+    },
+    {
+      "date": "2026-06-23",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-06-24",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-06-25",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-06-26",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-06-27",
+      "type": "shift",
+      "start": "20:00",
+      "end": "05:00"
+    },
+    {
+      "date": "2026-06-28",
+      "type": "shift",
+      "start": "18:00",
+      "end": "22:00"
+    },
+    {
+      "date": "2026-06-29",
+      "type": "shift",
+      "start": "20:30",
+      "end": "04:00"
+    },
+    {
+      "date": "2026-06-30",
+      "type": "shift",
+      "start": "21:30",
+      "end": "04:00"
+    },
+    {
+      "date": "2026-07-01",
+      "type": "shift",
+      "start": "20:00",
+      "end": "03:00"
+    },
+    {
+      "date": "2026-07-02",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-03",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-04",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-05",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-06",
+      "type": "shift",
+      "start": "19:00",
+      "end": "03:00"
+    },
+    {
+      "date": "2026-07-07",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-08",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-09",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-07-10",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-07-11",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-12",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-13",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-07-14",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-07-15",
+      "type": "shift",
+      "start": "14:00",
+      "end": "22:00"
+    },
+    {
+      "date": "2026-07-16",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-07-17",
+      "type": "norm",
+      "note": "normal office hours",
+      "start": "09:00",
+      "end": "17:00"
+    },
+    {
+      "date": "2026-07-18",
+      "type": "rest",
+      "note": "day off"
+    },
+    {
+      "date": "2026-07-19",
+      "type": "shift",
+      "start": "17:00",
+      "end": "22:00"
+    }
+  ]
+}

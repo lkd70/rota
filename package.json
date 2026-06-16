@@ -1,0 +1,8 @@
+{
+  "name": "days",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "npm run validate --prefix web"
+  }
+}

@@ -1,0 +1,126 @@
+.time-display {
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.time-display--rest {
+  color: var(--kind-rest);
+}
+
+.time-display--rest.time-display--mini {
+  font-size: 0.62rem;
+  font-weight: 500;
+}
+
+.time-display--compact {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.time-display--range {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.time-display--range.time-display--overnight {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.time-display--range.time-display--overnight .time-display__row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.time-display__value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.time-display--range .time-display__value {
+  font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+  .time-display--compact {
+    font-size: 0.58rem;
+  }
+
+  .time-display--rest.time-display--mini {
+    font-size: 0.54rem;
+  }
+}
+
+@media (min-width: 900px) {
+  html.layout-compact .time-display--compact {
+    font-size: 0.76rem;
+  }
+
+  html.layout-compact .time-display--rest.time-display--mini {
+    font-size: 0.7rem;
+  }
+
+  html.layout-wide .time-display--compact {
+    font-size: clamp(0.82rem, 1.1vw, 1.1rem);
+  }
+
+  html.layout-wide .time-display--rest.time-display--mini {
+    font-size: clamp(0.75rem, 1vw, 1rem);
+  }
+}
+
+.time-display__sep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1;
+}
+
+.time-display__sep--overnight {
+  color: var(--kind-night);
+}
+
+.time-display__overnight-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+  display: block;
+  transform: rotate(180deg);
+}
+
+.time-display--range .time-display__overnight-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.time-display__next-day {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--kind-night);
+  letter-spacing: 0.02em;
+}
+
+.time-display__tz {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}

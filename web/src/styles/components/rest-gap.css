@@ -1,0 +1,29 @@
+.rest-gap {
+  position: absolute;
+  top: 50%;
+  right: calc(var(--week-gap, 0.3rem) / -2);
+  transform: translate(50%, -50%);
+  z-index: 8;
+  font-size: 0.58rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  padding: 0.2rem 0.38rem;
+  border-radius: 999px;
+  color: var(--text);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 2px 8px color-mix(in srgb, var(--bg) 15%, transparent);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 900px) {
+  html.layout-wide .rest-gap {
+    font-size: clamp(0.58rem, 0.78vw, 0.7rem);
+    padding: 0.22rem 0.42rem;
+  }
+}

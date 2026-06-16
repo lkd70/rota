@@ -1,9 +1,12 @@
-import { mount } from 'svelte'
-import './app.css'
-import App from './App.svelte'
+import { mount } from 'svelte';
+import './styles/index.css';
+import App from './App.svelte';
+import { initPreferences } from '$lib/prefs/preferences.js';
 
-const app = mount(App, {
-  target: document.getElementById('app'),
-})
+if (import.meta.env.DEV) {
+  await import('$lib/data/assertSchedule.dev.js');
+}
 
-export default app
+initPreferences();
+
+mount(App, { target: document.getElementById('app') });

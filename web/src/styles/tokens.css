@@ -1,0 +1,132 @@
+:root,
+[data-resolved-theme='dark'] {
+  color-scheme: dark;
+
+  /* Base — dark */
+  --bg: #090a0c;
+  --bg-elevated: #0f1115;
+  --bg-gradient:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(110, 181, 224, 0.09), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(167, 139, 250, 0.05), transparent 50%);
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-raised: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #f0f2f5;
+  --muted: #7d8590;
+  --inset-surface: rgba(0, 0, 0, 0.2);
+
+  /* Day kinds */
+  --kind-rest: #5ee9b5;
+  --kind-rest-bg: rgba(94, 233, 181, 0.08);
+  --kind-rest-border: rgba(94, 233, 181, 0.2);
+  --kind-rest-glow: rgba(94, 233, 181, 0.35);
+
+  --kind-office: #6eb5e0;
+  --kind-office-bg: rgba(110, 181, 224, 0.08);
+  --kind-office-border: rgba(110, 181, 224, 0.2);
+  --kind-office-glow: rgba(110, 181, 224, 0.35);
+
+  --kind-late: #e8a855;
+  --kind-late-bg: rgba(232, 168, 85, 0.08);
+  --kind-late-border: rgba(232, 168, 85, 0.22);
+  --kind-late-glow: rgba(232, 168, 85, 0.35);
+
+  --kind-night: #a78bfa;
+  --kind-night-bg: rgba(167, 139, 250, 0.09);
+  --kind-night-border: rgba(167, 139, 250, 0.22);
+  --kind-night-glow: rgba(167, 139, 250, 0.35);
+
+  /* UI accents */
+  --accent: #c9a84c;
+  --accent-soft: rgba(201, 168, 76, 0.1);
+  --accent-border: rgba(201, 168, 76, 0.25);
+  --week-badge-bg: rgba(201, 168, 76, 0.15);
+  --banner-strong: #e0c878;
+
+  --free: #5ee9b5;
+  --free-bg: rgba(94, 233, 181, 0.12);
+  --free-border: rgba(94, 233, 181, 0.2);
+  --busy: #e8a855;
+  --busy-bg: rgba(232, 168, 85, 0.14);
+  --busy-border: rgba(232, 168, 85, 0.25);
+
+  --pill-bg: rgba(255, 255, 255, 0.06);
+  --pill-text: #b8bec8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --glass: blur(12px) saturate(1.4);
+  --glass-scrim: rgba(0, 0, 0, 0.22);
+  --glass-modal: rgba(15, 17, 21, 0.58);
+  --glass-modal-head: rgba(255, 255, 255, 0.05);
+  --glass-modal-cell: rgba(255, 255, 255, 0.08);
+  --glass-modal-border: rgba(255, 255, 255, 0.16);
+
+  /* Legacy aliases */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-resolved-theme='light'] {
+  color-scheme: light;
+  --bg: #f3f4f6;
+  --bg-elevated: #ffffff;
+  --bg-gradient:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(110, 181, 224, 0.14), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 100% 0%, rgba(167, 139, 250, 0.08), transparent 50%);
+  --surface: rgba(0, 0, 0, 0.03);
+  --surface-raised: rgba(0, 0, 0, 0.045);
+  --surface-hover: rgba(0, 0, 0, 0.06);
+  --border: rgba(0, 0, 0, 0.09);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --text: #16181d;
+  --muted: #5c6570;
+  --inset-surface: rgba(0, 0, 0, 0.04);
+  --kind-rest: #0d9f6e;
+  --kind-rest-bg: rgba(13, 159, 110, 0.1);
+  --kind-rest-border: rgba(13, 159, 110, 0.22);
+  --kind-rest-glow: rgba(13, 159, 110, 0.2);
+  --kind-office: #2d7fb8;
+  --kind-office-bg: rgba(45, 127, 184, 0.1);
+  --kind-office-border: rgba(45, 127, 184, 0.22);
+  --kind-office-glow: rgba(45, 127, 184, 0.2);
+  --kind-late: #c47a12;
+  --kind-late-bg: rgba(196, 122, 18, 0.1);
+  --kind-late-border: rgba(196, 122, 18, 0.24);
+  --kind-late-glow: rgba(196, 122, 18, 0.2);
+  --kind-night: #7c5ce0;
+  --kind-night-bg: rgba(124, 92, 224, 0.1);
+  --kind-night-border: rgba(124, 92, 224, 0.24);
+  --kind-night-glow: rgba(124, 92, 224, 0.2);
+  --accent: #9a7b1a;
+  --accent-soft: rgba(154, 123, 26, 0.12);
+  --accent-border: rgba(154, 123, 26, 0.28);
+  --week-badge-bg: rgba(154, 123, 26, 0.14);
+  --banner-strong: #7a6212;
+  --free: #0d9f6e;
+  --free-bg: rgba(13, 159, 110, 0.12);
+  --free-border: rgba(13, 159, 110, 0.25);
+  --busy: #c47a12;
+  --busy-bg: rgba(196, 122, 18, 0.14);
+  --busy-border: rgba(196, 122, 18, 0.28);
+  --pill-bg: rgba(0, 0, 0, 0.05);
+  --pill-text: #4a5360;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass-scrim: rgba(255, 255, 255, 0.18);
+  --glass-modal: rgba(255, 255, 255, 0.52);
+  --glass-modal-head: rgba(255, 255, 255, 0.35);
+  --glass-modal-cell: rgba(255, 255, 255, 0.42);
+  --glass-modal-border: rgba(0, 0, 0, 0.1);
+}

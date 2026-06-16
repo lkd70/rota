@@ -1,0 +1,282 @@
+.day-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.15rem;
+  min-height: 100%;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.day-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--kind-accent, transparent);
+  opacity: 0.85;
+}
+
+.day-card--rest { --kind-accent: var(--kind-rest); }
+.day-card--office { --kind-accent: var(--kind-office); }
+.day-card--late { --kind-accent: var(--kind-late); }
+.day-card--night { --kind-accent: var(--kind-night); }
+
+.day-card--compact {
+  width: 100%;
+}
+
+.day-card--mini {
+  padding: 0.4rem 0.25rem 0.5rem;
+  border-radius: 7px;
+  gap: 0.05rem;
+  width: 100%;
+}
+
+.day-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+}
+
+.day-card--mini .day-card__body {
+  gap: 0.05rem;
+}
+
+.day-card--expanded {
+  align-items: flex-start;
+  text-align: left;
+  padding: 1.1rem 1.15rem;
+  max-width: 420px;
+  border-radius: var(--radius-md);
+}
+
+.day-card--expanded .day-card__icon {
+  margin-bottom: 0.35rem;
+}
+
+.day-card--expanded .day-card__time {
+  align-self: stretch;
+  margin-top: 0.35rem;
+  padding: 0.55rem 0.65rem;
+  background: var(--inset-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.day-card--expanded .time-display--range {
+  align-items: flex-start;
+}
+
+.day-card--today {
+  background: var(--kind-bg, var(--surface));
+  border-color: color-mix(in srgb, var(--kind-accent, var(--accent)) 55%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--kind-accent, var(--accent)) 20%, transparent),
+    0 4px 20px color-mix(in srgb, var(--kind-glow, var(--kind-accent, var(--accent))) 14%, transparent);
+}
+
+.day-card--today.rest { --kind-glow: var(--kind-rest-glow); }
+.day-card--today.office { --kind-glow: var(--kind-office-glow); }
+.day-card--today.late { --kind-glow: var(--kind-late-glow); }
+.day-card--today.night { --kind-glow: var(--kind-night-glow); }
+
+.day-card--today::before {
+  height: 3px;
+  opacity: 1;
+}
+
+.day-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.35rem;
+  margin-bottom: 0.08rem;
+}
+
+.rest { --kind-bg: var(--kind-rest-bg); }
+.office { --kind-bg: var(--kind-office-bg); }
+.late { --kind-bg: var(--kind-late-bg); }
+.night { --kind-bg: var(--kind-night-bg); }
+
+.day-card--mini .day-card__icon {
+  margin-top: 0.4rem;
+  margin-bottom: 0.05rem;
+}
+
+.day-card--mini .day-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.day-card--expanded .day-card__icon {
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+}
+
+.day-card__date {
+  margin: 0;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .day-card--mini {
+    padding: 0.28rem 0.1rem 0.32rem;
+    border-radius: 6px;
+  }
+
+  .day-card--mini .day-card__icon {
+    margin-top: 0.32rem;
+    margin-bottom: 0.04rem;
+  }
+
+  .day-card--mini .day-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+}
+
+@media (min-width: 900px) {
+  html.layout-compact .day-card--mini {
+    padding: 0.55rem 0.35rem 0.6rem;
+    gap: 0.12rem;
+    min-height: 5.5rem;
+  }
+
+  html.layout-compact .day-card--mini .day-card__body {
+    flex: 1;
+    gap: 0.1rem;
+    justify-content: flex-start;
+  }
+
+  html.layout-compact .day-card--mini .day-card__icon {
+    margin-top: 0.38rem;
+  }
+
+  html.layout-compact .day-card--mini .day-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  html.layout-wide .day-card--mini {
+    padding: clamp(0.7rem, 1.2vw, 1.25rem) clamp(0.45rem, 0.9vw, 1rem) clamp(0.75rem, 1.2vw, 1.25rem);
+    gap: clamp(0.15rem, 0.4vw, 0.35rem);
+    min-height: clamp(6.25rem, 12vh, 10rem);
+  }
+
+  html.layout-wide .day-card--mini .day-card__body {
+    flex: 1;
+    gap: clamp(0.12rem, 0.35vw, 0.3rem);
+    justify-content: flex-start;
+  }
+
+  html.layout-wide .day-card--mini .day-card__icon {
+    margin-top: clamp(0.4rem, 0.8vw, 0.65rem);
+    margin-bottom: clamp(0.08rem, 0.2vw, 0.15rem);
+  }
+
+  html.layout-wide .day-card--mini .day-icon {
+    width: clamp(1.45rem, 2.2vw, 2.35rem);
+    height: clamp(1.45rem, 2.2vw, 2.35rem);
+  }
+
+  html.layout-wide .day-card--mini .day-card__month-mini {
+    font-size: clamp(0.5rem, 0.7vw, 0.68rem);
+  }
+}
+
+.month {
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.day-card__month-mini {
+  display: block;
+  margin-top: -0.05rem;
+  font-size: 0.45rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.day-card__weekday {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.day-card--mini .day-card__weekday {
+  font-size: 0.6rem;
+}
+
+.day-card__label {
+  margin: 0.25rem 0 0;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.day-card__time {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.day-card--mini .day-card__time {
+  margin-top: 0.04rem;
+}
+
+.day-card[data-cover-start]::after,
+.day-card[data-cover-end]::after {
+  position: absolute;
+  top: 0.28rem;
+  right: 0.22rem;
+  font-size: 0.45rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.28rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+  line-height: 1.2;
+  pointer-events: none;
+}
+
+.day-card[data-cover-start]::after {
+  content: 'Start';
+}
+
+.day-card[data-cover-end]::after {
+  content: 'End';
+}
+
+.day-card.day-card--link-focus {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--accent) 55%, transparent),
+    0 4px 18px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+

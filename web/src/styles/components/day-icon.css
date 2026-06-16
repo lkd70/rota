@@ -1,0 +1,33 @@
+.day-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.day-icon--rest { color: var(--kind-rest); }
+.day-icon--office { color: var(--kind-office); }
+.day-icon--late { color: var(--kind-late); }
+.day-icon--night { color: var(--kind-night); }
+
+.day-card--mini .day-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+@media (max-width: 640px) {
+  .day-card--mini .day-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+}
+
+@media (min-width: 900px) {
+  html.layout-compact .day-card--mini .day-icon {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  html.layout-wide .day-card--mini .day-icon {
+    width: clamp(1.45rem, 2.2vw, 2.35rem);
+    height: clamp(1.45rem, 2.2vw, 2.35rem);
+  }
+}
